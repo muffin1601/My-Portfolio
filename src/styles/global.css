@@ -1,0 +1,16 @@
+:root {
+  --primary: #e63946;
+  --bg-dark: #0d1117;
+  --bg-gradient: linear-gradient(135deg, #0d1117 40%, #1a0004 100%);
+  --text-light: #ffffff;
+  --text-gray: #b3b3b3;
+  --font: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-gradient);
+  font-family: var(--font);
+  color: var(--text-light);
+  overflow-x: hidden;
+}

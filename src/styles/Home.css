@@ -1,0 +1,21 @@
+.home {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.home span {
+  color: var(--primary);
+}
+
+.home p {
+  color: var(--gray);
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.home-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
