@@ -1,0 +1,48 @@
+.skill-marquee {
+  /* margin-top: 40px; */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.skill-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: scroll-left 18s linear infinite;
+  will-change: transform;
+}
+
+.skill-chip {
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.95rem;
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+}
+
+.skill-chip:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 64, 64, 0.2);
+  border-color: rgba(255, 64, 64, 0.4);
+}
+
+/* Infinite smooth scroll */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.skill-marquee:hover .skill-track {
+  animation-play-state: paused;
+}

@@ -13,6 +13,7 @@ import "./styles/global.css";
 function App() {
   return (
     <Router>
+      <div className="body-sect">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
+      </div>
     </Router>
   );
 }

@@ -1,52 +1,169 @@
+/* Smooth Navbar */
 .sana-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 9%;
-  background: rgba(15, 15, 15, 0.8);
-  backdrop-filter: blur(10px);
+  padding: 30px 5%;
+  width: 100%;
   position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 100;
+  z-index: 999;
+  box-sizing: border-box;
+
+  animation: fadeIn 0.8s ease forwards;
 }
 
+/* LOGO */
 .sana-logo {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #ff4040;
-  letter-spacing: 0.5px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* Logo icon */
+.logo-icon {
+  color: #ff4040;
+  filter: drop-shadow(0 0 6px rgba(255, 64, 64, 0.5));
+}
+
+/* Logo Glow */
+.logo-glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(255,64,64,0.35), transparent);
+  filter: blur(18px);
+  z-index: -1;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.sana-logo:hover .logo-glow {
+  opacity: 1;
+}
+
+/* NAV LINKS */
 .sana-nav-links {
   display: flex;
   list-style: none;
-  gap: 35px;
+  gap: 28px;
+}
+
+.sana-nav-links li {
+  position: relative;
 }
 
 .sana-nav-links a {
-  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #f5f5f5;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1rem;
   text-decoration: none;
   transition: 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+/* Underline hover animation */
+.sana-nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #ff4040;
+  transition: 0.3s ease;
+  border-radius: 10px;
 }
 
 .sana-nav-links a:hover {
   color: #ff4040;
 }
 
+.sana-nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ACTIVE NAV LINK (NEW) */
+.sana-nav-links .active-nav {
+  color: #ff4040;
+  font-weight: 600;
+}
+
+.sana-nav-links .active-nav::after {
+  width: 100%;
+  background: #ff4040;
+}
+
+/* RESUME BUTTON */
 .sana-resume-btn {
-  background: linear-gradient(90deg, #e63946, #ff4040);
-  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: 11px 28px;
   border: none;
-  padding: 10px 22px;
-  border-radius: 25px;
-  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: linear-gradient(90deg, #ff1212, #f72a2a);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: 'Outfit', sans-serif;
+
+  box-shadow: 0 0 12px rgba(255, 65, 65, 0.55),
+              inset 0 0 8px rgba(255, 255, 255, 0.25);
+  transition: 0.3s ease;
 }
 
 .sana-resume-btn:hover {
-  opacity: 0.9;
+  box-shadow: 0 0 20px rgba(255, 75, 75, 0.75),
+              inset 0 0 12px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Icon Styling */
+.resume-icon {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+}
+
+/* Shine Overlay */
+.resume-shine {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80px;
+  width: 60px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: skewX(-20deg);
+  filter: blur(6px);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+/* Shine movement */
+.sana-resume-btn:hover .resume-shine {
+  left: 120%;
+  opacity: 1;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

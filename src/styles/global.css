@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 :root {
   --primary: #e63946;
   --bg-dark: #0d1117;
   --bg-gradient: linear-gradient(135deg, #0d1117 40%, #1a0004 100%);
   --text-light: #ffffff;
   --text-gray: #b3b3b3;
-  --font: "Poppins", sans-serif;
+  --font: "Outfit", sans-serif;
 }
 
 body {
@@ -13,4 +15,52 @@ body {
   font-family: var(--font);
   color: var(--text-light);
   overflow-x: hidden;
+}
+
+.body-sect {
+  background: linear-gradient(
+    145deg,
+    rgba(10, 10, 10, 0.45),
+    rgba(25, 25, 25, 0.945)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50px;
+  margin: 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+position: relative;
+  overflow: hidden;
+}
+
+/* Animated Gradient Blobs */
+.body-sect::before,
+.body-sect::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 60, 60, 0.35), transparent);
+  filter: blur(60px);
+  animation: blobMove 18s infinite alternate ease-in-out;
+  z-index: -1;
+}
+
+.body-sect::before {
+  top: -80px;
+  left: -60px;
+}
+
+.body-sect::after {
+  bottom: -80px;
+  right: -60px;
+  animation-delay: 5s;
+}
+
+/* Blob Movement Animation */
+@keyframes blobMove {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.2); }
+  100% { transform: translate(-40px, 60px) scale(0.9); }
 }

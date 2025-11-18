@@ -1,121 +1,200 @@
+/* ------------------------------------------
+   HERO SECTION
+-------------------------------------------*/
+
 .sana-hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 160px 10%;
-  background: radial-gradient(circle at top left, #1a0004 0%, #0d1117 80%);
-  min-height: 90vh;
-  color: white;
+  padding: 120px 6% 0px 6%;
+  gap: 50px;
+  background: linear-gradient(135deg, #0d0d0f, #180000);
+  border-radius: 50px 50px 0 0;
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.sana-hero-content {
-  max-width: 550px;
+/* BACKGROUND ANIMATED RED GLOW */
+.sana-hero::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 64, 64, 0.32), transparent);
+  filter: blur(90px);
+  top: -70px;
+  right: -60px;
+  opacity: 0.55;
+  z-index: 0;
 }
+
+
+/* ------------------------------------------
+   LEFT CONTENT
+-------------------------------------------*/
 
 .sana-subtext {
-  color: #b5b5b5;
+  color: #ff4040;
+  font-weight: 600;
+  letter-spacing: 1px;
   margin-bottom: 12px;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .sana-heading {
-  font-size: 2.8rem;
-  line-height: 1.3;
+  font-size: 4.2rem;
   font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 18px;
 }
 
 .sana-highlight {
-  color: #e63946;
+  background: linear-gradient(90deg, #ff4040, #ff6a6a);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 800;
 }
 
 .sana-description {
-  color: #b5b5b5;
-  margin-top: 15px;
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 520px;
+  width: 80%;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 35px;
+  color: #d6d6d6;
 }
+
+
+/* ------------------------------------------
+   BUTTONS
+-------------------------------------------*/
 
 .sana-hero-buttons {
   display: flex;
   gap: 20px;
-  margin-top: 25px;
+}
+
+.sana-btn-primary,
+.sana-btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  transition: 0.3s ease;
 }
 
 .sana-btn-primary {
-  background: linear-gradient(90deg, #e63946, #ff4040);
+  background: linear-gradient(90deg, #ff3b3b, #ff5f5f);
   color: white;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s;
+  box-shadow: 0 0 14px rgba(255, 60, 60, 0.6);
 }
 
-.sana-btn-outline {
-  background: transparent;
-  border: 1.5px solid #e63946;
-  color: #e63946;
-  padding: 10px 24px;
-  border-radius: 30px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.sana-btn-outline:hover,
 .sana-btn-primary:hover {
-  opacity: 0.85;
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(255, 60, 60, 0.85);
 }
+
+.sana-btn-secondary {
+  background: transparent;
+  border: 2px solid #ff4040;
+  color: #ff4040;
+}
+
+.sana-btn-secondary:hover {
+  background: rgba(255, 64, 64, 0.15);
+  transform: translateY(-3px);
+}
+
+
+/* ------------------------------------------
+   RIGHT IMAGE AREA
+-------------------------------------------*/
 
 .sana-hero-image {
   position: relative;
+  z-index: 5;
 }
 
+/* Main Hero Image (More Aesthetic Ratio) */
 .sana-profile-img {
-  width: 340px;
-  border-radius: 10px;
-  filter: brightness(1.05);
+  width: 430px;
+  height: 580px;
+  object-fit: cover;
+  border-radius: 30px;
+  position: relative;
+  z-index: 3;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.35);
 }
 
-.sana-experience-badge {
+/* Glow Behind Image */
+.sana-glow-ring {
   position: absolute;
-  top: 25px;
-  right: -50px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 12px 20px;
-  border-radius: 12px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 520px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 60, 60, 0.45), transparent);
+  filter: blur(75px);
+  z-index: 1;
+  top: -40px;
+  left: -40px;
+  opacity: 0.6;
 }
 
-.sana-experience-badge h3 {
-  color: #e63946;
-  margin: 0;
-  font-size: 1.4rem;
-}
 
-.sana-experience-badge p {
-  margin: 0;
-  font-size: 0.9rem;
-}
+/* ------------------------------------------
+   GLASS BADGES
+-------------------------------------------*/
 
+.sana-experience-badge,
 .sana-customer-badge {
   position: absolute;
-  bottom: 20px;
-  left: -40px;
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.08);
-  padding: 10px 15px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  z-index: 99;
+  white-space: nowrap;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
 }
 
-.sana-customer-badge p {
-  font-size: 0.85rem;
-  margin: 0 0 6px;
+/* Experience Badge */
+.sana-experience-badge {
+  top: -25px;
+  right: 20px;
+}
+
+.badge-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ff4040;
+  margin: 0;
+}
+
+.badge-p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+
+/* Customer Badge */
+.sana-customer-badge {
+  bottom: -25px;
+  left: 20px;
 }
 
 .sana-avatars {
@@ -124,23 +203,115 @@
 }
 
 .sana-avatars img {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  margin-left: -8px;
-  border: 1px solid #0d1117;
+  object-fit: cover;
+  margin-left: -10px;
+  border: 2px solid #fff;
 }
 
 .sana-add {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #e63946;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-left: -8px;
+  background: #ff4040;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: #fff;
+  margin-left: 6px;
+}  /* floating icons */
+.floating-icon {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  z-index: 8;
+  color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(8px);
 }
+
+/* individual placements (tweak positions if you want) */
+.floating-icon-1 { top: 20%; right: 44%; transform: translate3d(0,0,0); }
+.floating-icon-2 { top: 6%; right: 10%; transform: translate3d(0,0,0); }
+.floating-icon-3 { bottom: 22%; right: 24%; transform: translate3d(0,0,0); }
+.floating-icon-4 { bottom: 8%; right: 46%; transform: translate3d(0,0,0); }
+
+/* hover pop */
+.floating-icon:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 30px rgba(255, 64, 64, 0.15);
+}
+
+/* backside large soft image (depth) */
+.sana-hero-image-back {
+  position: absolute;
+  top: 50%;
+  right: -60px;
+  width: 520px;
+  height: 520px;
+  transform: translateY(-50%);
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0.12;
+  filter: blur(6px) saturate(1.05);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ensure profile image sits above */
+.sana-profile-img {
+  width: 430px;
+  height: 580px;
+  object-fit: cover;
+  border-radius: 20px;
+  position: relative;
+  z-index: 5;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* glow ring stays behind profile but above the huge back image */
+.sana-glow-ring {
+  position: absolute;
+  width: 520px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,64,64,0.42), transparent);
+  filter: blur(74px);
+  z-index: 1;
+  top: -40px;
+  left: -40px;
+  opacity: 0.7;
+}
+
+/* badges keep same styling but ensure z-index and responsiveness */
+.sana-experience-badge,
+.sana-customer-badge {
+  z-index: 9;
+}
+
+/* small responsive tweaks */
+@media (max-width: 980px) {
+  .sana-profile-img { width: 320px; height: 420px; }
+  .sana-hero { padding: 80px 4%; gap: 30px; min-height: 80vh; }
+  .floating-icon { width: 44px; height: 44px; }
+  .floating-icon-1 { right: 40%; top: 18%; }
+  .floating-icon-2 { right: 6%; top: 8%; }
+  .floating-icon-3 { right: 28%; bottom: 20%; }
+  .floating-icon-4 { right: 46%; bottom: 10%; }
+}
+
+@media (max-width: 640px) {
+  .sana-hero { flex-direction: column-reverse; padding: 60px 3%; min-height: auto; }
+  .sana-hero-content { text-align: center; order: 2; z-index: 6; }
+  .sana-hero-image { order: 1; margin-bottom: 36px; }
+  .sana-profile-img { width: 260px; height: 320px; }
+  .sana-hero-image-back { display: none; }
+  .floating-icon { display: none; }
+}   
+
