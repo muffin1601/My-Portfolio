@@ -1,5 +1,4 @@
 .skill-marquee {
-  /* margin-top: 40px; */
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -38,11 +37,22 @@
 
 /* Infinite smooth scroll */
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Pause on hover */
 .skill-marquee:hover .skill-track {
   animation-play-state: paused;
+}
+@media (max-width: 600px) {
+  .skill-chip {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
 }

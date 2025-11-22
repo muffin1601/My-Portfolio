@@ -1,5 +1,13 @@
-import React, { useEffect } from "react";
-import { Code2, Terminal, Database, Layers, Cpu, Globe, GitBranch } from "lucide-react";
+import React from "react";
+import {
+  Code2,
+  Terminal,
+  Database,
+  Layers,
+  Cpu,
+  Globe,
+  GitBranch,
+} from "lucide-react";
 import "../styles/SkillMarquee.css";
 
 const SkillMarquee = () => {

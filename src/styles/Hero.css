@@ -1,7 +1,4 @@
-/* ------------------------------------------
-   HERO SECTION
--------------------------------------------*/
-
+/* HERO SECTION */
 .sana-hero {
   display: flex;
   justify-content: space-between;
@@ -31,10 +28,11 @@
   z-index: 0;
 }
 
-
-/* ------------------------------------------
-   LEFT CONTENT
--------------------------------------------*/
+/* LEFT CONTENT */
+.sana-hero-content {
+  position: relative;
+  z-index: 5;
+}
 
 .sana-subtext {
   color: #ff4040;
@@ -67,18 +65,13 @@
   color: #d6d6d6;
 }
 
-
-/* ------------------------------------------
-   BUTTONS
--------------------------------------------*/
-
+/* BUTTONS */
 .sana-hero-buttons {
   display: flex;
   gap: 20px;
 }
 
-.sana-btn-primary,
-.sana-btn-secondary {
+.sana-btn-primary {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -90,9 +83,6 @@
   font-size: 1rem;
   border: none;
   transition: 0.3s ease;
-}
-
-.sana-btn-primary {
   background: linear-gradient(90deg, #ff3b3b, #ff5f5f);
   color: white;
   box-shadow: 0 0 14px rgba(255, 60, 60, 0.6);
@@ -103,37 +93,22 @@
   box-shadow: 0 0 22px rgba(255, 60, 60, 0.85);
 }
 
-.sana-btn-secondary {
-  background: transparent;
-  border: 2px solid #ff4040;
-  color: #ff4040;
-}
-
-.sana-btn-secondary:hover {
-  background: rgba(255, 64, 64, 0.15);
-  transform: translateY(-3px);
-}
-
-
-/* ------------------------------------------
-   RIGHT IMAGE AREA
--------------------------------------------*/
-
+/* RIGHT IMAGE AREA */
 .sana-hero-image {
   position: relative;
   z-index: 5;
 }
 
-/* Main Hero Image (More Aesthetic Ratio) */
+/* Main Hero Image */
 .sana-profile-img {
   width: 430px;
   height: 580px;
   object-fit: cover;
-  border-radius: 30px;
+  border-radius: 20px;
   position: relative;
-  z-index: 3;
-  border: 3px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
 }
 
 /* Glow Behind Image */
@@ -142,21 +117,16 @@
   width: 520px;
   height: 650px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 60, 60, 0.45), transparent);
-  filter: blur(75px);
+  background: radial-gradient(circle, rgba(255, 64, 64, 0.42), transparent);
+  filter: blur(74px);
   z-index: 1;
   top: -40px;
   left: -40px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-
-/* ------------------------------------------
-   GLASS BADGES
--------------------------------------------*/
-
-.sana-experience-badge,
-.sana-customer-badge {
+/* GLASS BADGES */
+.sana-experience-badge {
   position: absolute;
   padding: 12px 25px;
   display: flex;
@@ -167,13 +137,9 @@
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
-  z-index: 99;
+  z-index: 9;
   white-space: nowrap;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
-}
-
-/* Experience Badge */
-.sana-experience-badge {
   top: -25px;
   right: 20px;
 }
@@ -190,128 +156,58 @@
   opacity: 0.9;
 }
 
-
-/* Customer Badge */
-.sana-customer-badge {
-  bottom: -25px;
-  left: 20px;
-}
-
-.sana-avatars {
-  display: flex;
-  align-items: center;
-}
-
-.sana-avatars img {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-left: -10px;
-  border: 2px solid #fff;
-}
-
-.sana-add {
-  background: #ff4040;
-  padding: 6px 12px;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  color: #fff;
-  margin-left: 6px;
-}  /* floating icons */
-.floating-icon {
-  position: absolute;
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
-  z-index: 8;
-  color: #fff;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  backdrop-filter: blur(8px);
-}
-
-/* individual placements (tweak positions if you want) */
-.floating-icon-1 { top: 20%; right: 44%; transform: translate3d(0,0,0); }
-.floating-icon-2 { top: 6%; right: 10%; transform: translate3d(0,0,0); }
-.floating-icon-3 { bottom: 22%; right: 24%; transform: translate3d(0,0,0); }
-.floating-icon-4 { bottom: 8%; right: 46%; transform: translate3d(0,0,0); }
-
-/* hover pop */
-.floating-icon:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 16px 30px rgba(255, 64, 64, 0.15);
-}
-
-/* backside large soft image (depth) */
-.sana-hero-image-back {
-  position: absolute;
-  top: 50%;
-  right: -60px;
-  width: 520px;
-  height: 520px;
-  transform: translateY(-50%);
-  object-fit: cover;
-  border-radius: 50%;
-  opacity: 0.12;
-  filter: blur(6px) saturate(1.05);
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* ensure profile image sits above */
-.sana-profile-img {
-  width: 430px;
-  height: 580px;
-  object-fit: cover;
-  border-radius: 20px;
-  position: relative;
-  z-index: 5;
-  border: 3px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
-}
-
-/* glow ring stays behind profile but above the huge back image */
-.sana-glow-ring {
-  position: absolute;
-  width: 520px;
-  height: 650px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,64,64,0.42), transparent);
-  filter: blur(74px);
-  z-index: 1;
-  top: -40px;
-  left: -40px;
-  opacity: 0.7;
-}
-
-/* badges keep same styling but ensure z-index and responsiveness */
-.sana-experience-badge,
-.sana-customer-badge {
-  z-index: 9;
-}
-
-/* small responsive tweaks */
+/* RESPONSIVE */
 @media (max-width: 980px) {
-  .sana-profile-img { width: 320px; height: 420px; }
-  .sana-hero { padding: 80px 4%; gap: 30px; min-height: 80vh; }
-  .floating-icon { width: 44px; height: 44px; }
-  .floating-icon-1 { right: 40%; top: 18%; }
-  .floating-icon-2 { right: 6%; top: 8%; }
-  .floating-icon-3 { right: 28%; bottom: 20%; }
-  .floating-icon-4 { right: 46%; bottom: 10%; }
+  .sana-profile-img {
+    width: 320px;
+    height: 420px;
+  }
+
+  .sana-hero {
+    padding: 100px 4% 40px;
+    gap: 30px;
+    min-height: 80vh;
+  }
 }
 
 @media (max-width: 640px) {
-  .sana-hero { flex-direction: column-reverse; padding: 60px 3%; min-height: auto; }
-  .sana-hero-content { text-align: center; order: 2; z-index: 6; }
-  .sana-hero-image { order: 1; margin-bottom: 36px; }
-  .sana-profile-img { width: 260px; height: 320px; }
-  .sana-hero-image-back { display: none; }
-  .floating-icon { display: none; }
-}   
+  .sana-hero {
+    flex-direction: column-reverse;
+    padding: 100px 3% 40px;
+    min-height: auto;
+  }
 
+  .sana-hero-content {
+    text-align: center;
+    order: 2;
+    z-index: 6;
+  }
+
+  .sana-hero-image {
+    order: 1;
+    margin-bottom: 36px;
+  }
+
+  .sana-profile-img {
+    width: 260px;
+    height: 320px;
+  }
+
+  .sana-description {
+    width: 100%;
+  }
+
+  .sana-hero-buttons {
+    justify-content: center;
+  }
+}
+@media (max-width: 400px) {
+  .sana-heading {
+    font-size: 3rem;
+  }
+
+  .sana-profile-img {
+    width: 220px;
+    height: 280px;
+  }
+}

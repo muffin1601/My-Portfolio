@@ -82,6 +82,8 @@ const useCounter = (targetValue, duration = 1200) => {
     const handleScroll = () => {
       if (!started.current) {
         const section = document.querySelector(".tools-section");
+        if (!section) return;
+
         const top = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
 
@@ -94,7 +96,7 @@ const useCounter = (targetValue, duration = 1200) => {
           const animate = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            const easeOut = 1 - Math.pow(1 - progress, 3); // smooth easing
+            const easeOut = 1 - Math.pow(1 - progress, 3);
 
             setValue(Math.floor(start + easeOut * (targetValue - start)));
 
@@ -117,35 +119,42 @@ const useCounter = (targetValue, duration = 1200) => {
   return value;
 };
 
+const ToolCard = ({ tool }) => {
+  const animatedValue = useCounter(tool.percent);
+
+  return (
+    <div className="tool-card">
+      <div className="tool-left">
+        <div className="tool-icon">{tool.icon}</div>
+
+        <div className="tool-texts">
+          <h3>{tool.name}</h3>
+          <p>{tool.desc}</p>
+        </div>
+      </div>
+
+      <div className="tool-percentage">{animatedValue}%</div>
+    </div>
+  );
+};
+
 const MyTools = () => {
   return (
-    <section className="tools-section">
+    <section id="skills" className="tools-section">
       <div className="tools-container">
-        <p className="tools-subtitle"><span className="dot"></span> My Technical Skills</p>
-              <h2 className="tools-title">
-                  The technologies that power<br />
-                  <span>everything I build</span>
-              </h2>
+        <p className="tools-subtitle">
+          <span className="dot"></span> My Technical Skills
+        </p>
+        <h2 className="tools-title">
+          The technologies that power
+          <br />
+          <span>everything I build</span>
+        </h2>
 
         <div className="tools-grid">
-          {tools.map((tool, index) => {
-            const animatedValue = useCounter(tool.percent);
-
-            return (
-              <div key={index} className="tool-card">
-                <div className="tool-left">
-                  <div className="tool-icon">{tool.icon}</div>
-
-                  <div className="tool-texts">
-                    <h3>{tool.name}</h3>
-                    <p>{tool.desc}</p>
-                  </div>
-                </div>
-
-                <div className="tool-percentage">{animatedValue}%</div>
-              </div>
-            );
-          })}
+          {tools.map((tool, index) => (
+            <ToolCard key={index} tool={tool} />
+          ))}
         </div>
       </div>
     </section>

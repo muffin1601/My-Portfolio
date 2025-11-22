@@ -1,17 +1,19 @@
 import React from "react";
 import "../styles/Home.css";
-import Hero from "../components/Hero"
+import Hero from "../components/Hero";
 import SkillMarquee from "../components/SkillMarquee";
 import MyTools from "../components/MyTools";
 import MyProjects from "../components/MyProjects";
+import Footer from "../components/Footer";
 
 const Home = () => (
   <>
-    
-      <Hero />
-      <SkillMarquee />
-      <MyTools />
-      <MyProjects />
+    <Hero />
+    <SkillMarquee />
+    <MyProjects />
+    <SkillMarquee />
+    <MyTools />
+   
   </>
 );
 
