@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
 
 :root {
   --primary: #e63946;
@@ -17,6 +17,7 @@ body {
   overflow-x: hidden;
 }
 
+/* main app wrapper */
 .body-sect {
   background: linear-gradient(
     145deg,
@@ -29,7 +30,7 @@ body {
   border-radius: 50px;
   margin: 60px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-position: relative;
+  position: relative;
   overflow: hidden;
 }
 
@@ -60,7 +61,35 @@ position: relative;
 
 /* Blob Movement Animation */
 @keyframes blobMove {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60px, -40px) scale(1.2); }
-  100% { transform: translate(-40px, 60px) scale(0.9); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, -40px) scale(1.2);
+  }
+  100% {
+    transform: translate(-40px, 60px) scale(0.9);
+  }
+}
+
+/* Responsive wrapper */
+@media (max-width: 1024px) {
+  .body-sect {
+    margin: 30px;
+    border-radius: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .body-sect {
+    margin: 16px;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .body-sect {
+    margin: 10px;
+    border-radius: 18px;
+  }
 }

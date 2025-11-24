@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
+  X,
   Home,
   User,
   Layers,
@@ -54,74 +55,147 @@ const Navbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleNavClick = (item) => {
+    document
+      .getElementById(item.name.toLowerCase().replace(" ", "-"))
+      ?.scrollIntoView({ behavior: "smooth" });
+    setActive(item.name);
+    setNavOpen(false);
+  };
+
   return (
-    <motion.nav
-      className={`sana-navbar ${navOpen ? "nav-open" : ""}`}
-      initial={{ y: -60, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* LOGO */}
-      <motion.div
-        className="sana-logo"
-        whileHover={{ scale: 1.08 }}
-        transition={{ type: "spring", stiffness: 200 }}
-        onClick={() =>
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          })
-        }
+    <>
+      {/* TOP NAVBAR (always visible) */}
+      <motion.nav
+        className={`sana-navbar ${navOpen ? "nav-open" : ""}`}
+        initial={{ y: -60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
       >
-        <span className="logo-glow"></span>
-        <Sparkles size={22} className="logo-icon" />
-        Sana Arif
-      </motion.div>
+        {/* LOGO */}
+        <motion.div
+          className="sana-logo"
+          whileHover={{ scale: 1.08 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
+        >
+          <span className="logo-glow"></span>
+          <Sparkles size={22} className="logo-icon" />
+          Sana Arif
+        </motion.div>
 
-      {/* NAV LINKS */}
-      <ul className="sana-nav-links">
-        {navItems.map((item) => (
-          <li key={item.name}>
-            <a
-              href={`#${item.name.toLowerCase().replace(" ", "-")}`}
-              className={active === item.name ? "active-nav" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById(item.name.toLowerCase().replace(" ", "-"))
-                  ?.scrollIntoView({ behavior: "smooth" });
-                setActive(item.name);
-                setNavOpen(false);
-              }}
+        {/* DESKTOP NAV LINKS */}
+        <ul className="sana-nav-links">
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <a
+                href={`#${item.name.toLowerCase().replace(" ", "-")}`}
+                className={active === item.name ? "active-nav" : ""}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item);
+                }}
+              >
+                {item.icon} {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* DESKTOP RESUME BUTTON */}
+        <motion.a
+          href="/Sana-resume.pdf"
+          download="Sana-Arif-Resume.pdf"
+          className="sana-resume-btn"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FileText size={16} className="resume-icon" />
+          Resume
+          <span className="resume-shine"></span>
+        </motion.a>
+
+        {/* MOBILE MENU TOGGLE (only visible on small screens via CSS) */}
+        <button
+          className="sana-mobile-toggle"
+          onClick={() => setNavOpen((prev) => !prev)}
+          aria-label="Toggle navigation"
+        >
+          {navOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </motion.nav>
+
+      {/* MOBILE SIDEBAR + BACKDROP */}
+      <AnimatePresence>
+        {navOpen && (
+          <>
+            {/* Dark overlay */}
+            <motion.div
+              className="sana-sidebar-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setNavOpen(false)}
+            />
+
+            {/* Sliding sidebar */}
+            <motion.aside
+              className="sana-sidebar"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 260, damping: 25 }}
             >
-              {item.icon} {item.name}
-            </a>
-          </li>
-        ))}
-      </ul>
+              <div className="sana-sidebar-header">
+                <div className="sidebar-logo">
+                  <Sparkles size={20} className="logo-icon" />
+                  <span>Sana Arif</span>
+                </div>
+                <button
+                  className="sidebar-close-btn"
+                  onClick={() => setNavOpen(false)}
+                  aria-label="Close navigation"
+                >
+                  <X size={22} />
+                </button>
+              </div>
 
-      {/* RESUME BTN – downloads PDF */}
-      <motion.a
-        href="/Sana-resume.pdf"
-        download="Sana-Arif-Resume.pdf"
-        className="sana-resume-btn"
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <FileText size={16} className="resume-icon" />
-        Resume
-        <span className="resume-shine"></span>
-      </motion.a>
+              <ul className="sana-sidebar-links">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <button
+                      className={`sidebar-link-btn ${
+                        active === item.name ? "active-nav" : ""
+                      }`}
+                      onClick={() => handleNavClick(item)}
+                    >
+                      {item.icon}
+                      <span>{item.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
 
-      {/* MOBILE MENU TOGGLE */}
-      <button
-        className="sana-mobile-toggle"
-        onClick={() => setNavOpen((prev) => !prev)}
-        aria-label="Toggle navigation"
-      >
-        <Menu size={22} />
-      </button>
-    </motion.nav>
+              <motion.a
+                href="/Sana-resume.pdf"
+                download="Sana-Arif-Resume.pdf"
+                className="sana-sidebar-resume"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <FileText size={16} className="resume-icon" />
+                Download Resume
+              </motion.a>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

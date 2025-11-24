@@ -1,12 +1,15 @@
-/* Smooth Navbar */
+/* ===========================
+   MAIN NAVBAR BASE STYLES
+=========================== */
 .sana-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 5%;
+  padding: 28px 6%;
   width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 999;
   box-sizing: border-box;
 
@@ -20,25 +23,24 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* LOGO */
+/* ===========================
+   LOGO
+=========================== */
 .sana-logo {
   font-size: 1.6rem;
   font-weight: 700;
   color: #ff4040;
-  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
 }
 
-/* Logo icon */
 .logo-icon {
-  color: #ff4040;
   filter: drop-shadow(0 0 6px rgba(255, 64, 64, 0.5));
 }
 
-/* Logo Glow */
 .logo-glow {
   position: absolute;
   left: 0;
@@ -56,7 +58,9 @@
   opacity: 1;
 }
 
-/* NAV LINKS */
+/* ===========================
+   DESKTOP NAV LINKS
+=========================== */
 .sana-nav-links {
   display: flex;
   list-style: none;
@@ -72,16 +76,15 @@
   align-items: center;
   gap: 6px;
   color: #f5f5f5;
-  font-weight: 500;
   font-size: 1rem;
+  font-weight: 500;
   text-decoration: none;
-  transition: 0.3s ease;
-  position: relative;
   padding-bottom: 3px;
   cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
 }
 
-/* Underline hover animation */
 .sana-nav-links a::after {
   content: "";
   position: absolute;
@@ -94,47 +97,37 @@
   border-radius: 10px;
 }
 
-.sana-nav-links a:hover {
-  color: #ff4040;
-}
-
-.sana-nav-links a:hover::after {
-  width: 100%;
-}
-
-/* ACTIVE NAV LINK */
+.sana-nav-links a:hover,
 .sana-nav-links .active-nav {
   color: #ff4040;
   font-weight: 600;
 }
 
+.sana-nav-links a:hover::after,
 .sana-nav-links .active-nav::after {
   width: 100%;
-  background: #ff4040;
 }
 
-/* RESUME BUTTON */
+/* ===========================
+   RESUME BUTTON (DESKTOP)
+=========================== */
 .sana-resume-btn {
-  position: relative;
-  overflow: hidden;
   padding: 11px 28px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ff1212, #f72a2a);
+  color: white;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 600;
   border: none;
   cursor: pointer;
-  border-radius: 30px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  background: linear-gradient(90deg, #ff1212, #f72a2a);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.95rem;
-  font-family: "Outfit", sans-serif;
-
+  position: relative;
+  overflow: hidden;
   box-shadow: 0 0 12px rgba(255, 65, 65, 0.55),
     inset 0 0 8px rgba(255, 255, 255, 0.25);
   transition: 0.3s ease;
+  text-decoration: none;
 }
 
 .sana-resume-btn:hover {
@@ -143,72 +136,160 @@
   transform: translateY(-2px);
 }
 
-/* Icon Styling */
-.resume-icon {
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
-}
-
-/* Shine Overlay */
 .resume-shine {
-  content: "";
   position: absolute;
   top: 0;
   left: -80px;
   width: 60px;
   height: 100%;
   background: rgba(255, 255, 255, 0.45);
-  transform: skewX(-20deg);
   filter: blur(6px);
+  transform: skewX(-20deg);
   opacity: 0;
   transition: 0.4s ease;
 }
 
-/* Shine movement */
 .sana-resume-btn:hover .resume-shine {
   left: 120%;
   opacity: 1;
 }
 
-/* MOBILE MENU TOGGLE */
+/* ===========================
+   MOBILE MENU TOGGLE BUTTON
+=========================== */
 .sana-mobile-toggle {
   display: none;
-  background: transparent;
+  color: #fff;
   border: none;
+  background: none;
   cursor: pointer;
 }
 
-/* Responsive Navbar */
+/* ===========================
+   MOBILE SIDEBAR MENU
+=========================== */
+.sana-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 80vh;
+  width: 260px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 1000;
+
+  background: rgba(10, 10, 16, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Sidebar header (logo + close btn) */
+.sana-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #ff4040;
+}
+
+.sidebar-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+}
+
+/* Sidebar links list */
+.sana-sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Each sidebar link button */
+.sidebar-link-btn {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 999px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.98rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: 0.25s ease;
+}
+
+.sidebar-link-btn:hover {
+  background: rgba(255, 64, 64, 0.18);
+}
+
+.sidebar-link-btn.active-nav {
+  background: rgba(255, 64, 64, 0.24);
+  color: #ffb3b3;
+}
+
+/* Sidebar resume button */
+.sana-sidebar-resume {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, #ff1212, #f72a2a);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(255, 65, 65, 0.55),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* BACKDROP behind sidebar */
+.sana-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* ===========================
+   RESPONSIVE RULES
+=========================== */
 @media (max-width: 900px) {
+  .sana-nav-links,
   .sana-resume-btn {
     display: none;
-  }
-
-  .sana-nav-links {
-    position: absolute;
-    top: 72px;
-    right: 5%;
-    background: rgba(10, 10, 16, 0.96);
-    padding: 14px 20px;
-    border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    flex-direction: column;
-    gap: 16px;
-    display: none;
-  }
-
-  .sana-navbar.nav-open .sana-nav-links {
-    display: flex;
   }
 
   .sana-mobile-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f5f5f5;
   }
 }
+
 @media (max-width: 600px) {
   .sana-navbar {
     padding: 20px 4%;
